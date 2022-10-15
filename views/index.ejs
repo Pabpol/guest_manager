@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/style.css">
+
+</head>
+
+<body>
+    <main>
+
+    </main>
+    <nav class="nav">
+        <h1>Carol y Daniel</h1>
+
+        <div class="menu">
+            <div class="menu-boton " id="ceremonia">
+                <input type="checkbox" id="btnCeremonia" class="btnCeremonia"/>
+                <label class="btn" for="btnCeremonia" data-toggle="modal" data-target="#lab-slide-bottom-popup"><img src="/images/ceremonia.png"></label>
+                <p>Ceremonia</p>
+            </div>
+            <div class="menu-boton " id="fiesta">
+                <input type="checkbox" id="btnFiesta" />
+                <label class="btn" for="btnFiesta"><img src="/images/fiesta.png" alt=""></label>
+
+                <p>Fiesta</p>
+            </div>
+            <div class="menu-boton " id="codigo-novios">
+                <input type="checkbox" id="btnCodigo" />
+                <label class="btn" for="btnCodigo"><img src="/images/regalo.png" alt=""></label>
+
+                <p>Código<br> Novios</p>
+            </div>
+            <div class="menu-boton " id="confirmar">
+                <input type="checkbox" id="btnConfirmar" />
+                <label class="btn" for="btnConfirmar"><img src="/images/confirmar.png" alt=""></label>
+
+                <p>¡Confirma<br> aquí!</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- modal -->
+    <div id="simpleModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                </div>
+                <img class="closeBtn" src="/images/cerrar.png" alt=""></i>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+
+<!-- formulario -->
+    <div id="simpleForm" class="form-overlay">
+        <div class="form-content">
+            <div class="form-header">
+                <div class="form-title">
+                </div>
+                <img class="closeBtnForm" src="/images/cerrar.png" alt=""></i>
+            </div>
+            <div class="form-body">
+               
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascripts/script.js"></script>
+</body>
+
+</html>
