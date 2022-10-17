@@ -4,11 +4,17 @@ module.exports = {
   addGuest: (guest) => {
     console.log(guest);
     try {
-      guestRespository.add(guest);
-      return true;
+      if (guest.mail === "") {
+        throw error;
+      }
+      if (guestRespository.get(guest.mail)) {
+        guestRespository.add(guest);
+        return true;
+      }else{
+        return false;
+      }
     } catch (error) {
-      return false;
-      console.log(error);
+      throw error
     }
   },
 };

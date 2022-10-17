@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     menuAcompanante: DataTypes.STRING,
     mail:{
       type: DataTypes.STRING,
-      unique: true
+      unique: true,
+      notEmpty: true, 
     } 
   }, {
     sequelize,
