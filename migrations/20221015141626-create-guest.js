@@ -33,6 +33,7 @@ module.exports = {
       mail: {
         type: Sequelize.STRING,
         allowNull: false,
+        notEmpty: true, 
       }
     });
     queryInterface.addConstraint('Guests', {
