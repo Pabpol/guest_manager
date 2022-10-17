@@ -13,12 +13,11 @@ router.post("/",async (req, res) => {
         res.redirect('/ya-confirmado');
         res.end();
       }
-       
-
       } catch (error) {
       console.log(error)
       res.statusCode = 500;
       res.statusMessage = "Error al confirmar";
+      res.redirect('/error');
       res.end();
       
     }

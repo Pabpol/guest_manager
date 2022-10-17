@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var formRouter = require('./routes/form');
 var confirmadoRouter = require('./routes/confirmado');
 var mailYaExiste = require('./routes/mailYaExiste');
+var errorView = require('./routes/error');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/form', formRouter);
 app.use('/confirmado', confirmadoRouter);
 app.use('/ya-confirmado', mailYaExiste);
+app.use('/error', errorView);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
