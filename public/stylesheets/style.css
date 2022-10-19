@@ -23,17 +23,6 @@ main{
 
 }
 
-h1{
-  font-family: 'Abril Fatface';
-  font-size: 8vmin;
-  text-align: center;
-  color: white;
-  z-index: 1;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  font-weight: 200;
-
-}
 h2{
   font-family: 'Lato';
   font-style: normal;
