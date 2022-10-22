@@ -1,6 +1,6 @@
 html{
   min-height: 100%;
-  background-color: #F3EADA;
+  background-color: #fff;
 }
 body{
   font-family: 'Abril Fatface', cursive;
@@ -241,6 +241,7 @@ button{
 .form-overlay.active{
 pointer-events: initial;
 bottom: 0;
+background-color: white;
 right: 0;
 }
 
@@ -393,7 +394,7 @@ input.radio{
 
 .tab{
   display: none;
-  position: relative;
+  position: absolute;
   z-index: 1;
   width: 100%;
   overflow: auto;
@@ -406,12 +407,14 @@ input.radio{
   
 }
 .tab.active{
+  position: relative;
   pointer-events: initial;
   bottom: 0;
   right: 0;
 }
 
 .tab.active.siguiente{
+  position: absolute;
   pointer-events: initial;
   bottom: 0;
   right: 100%;
@@ -438,7 +441,7 @@ input.radio{
   height: 60%;
 }
 #llevas-acompañante{
-  height: 60%;
+  height: 100vh;
 }
 @media only screen and (min-width: 400px) {
   main{
