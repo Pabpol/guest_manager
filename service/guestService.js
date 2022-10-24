@@ -3,7 +3,7 @@ const { send } = require("./sendMail");
 
 
 module.exports = {
-  addGuest: (guest) => {
+  addGuest: async(guest) => {
     console.log(guest);
     try {
       if (guest.mail === "") {
@@ -11,7 +11,7 @@ module.exports = {
       }
       if (!guestRespository.get(guest.mail)) {
         guestRespository.add(guest);
-        send(guest.mail);
+        await send(guest.mail);
         return true;
       }else{
         return false;

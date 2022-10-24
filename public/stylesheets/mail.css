@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:ital,wght@0,300;0,400;0,900;1,400&family=Mr+Dafoe&display=swap" rel="stylesheet">
-<style>
-    body {
+body {
     background-color: #FFFBF4 ;
     margin: 0;
 }
@@ -117,7 +107,7 @@ h1{
   }
 
   #footer {
-    background-image: url("../images/diseno-email.png");
+    background-image: url("../images/diseño-email.png");
     background-size:110vw;
     background-repeat: no-repeat;
     background-position: center;
@@ -127,30 +117,3 @@ h1{
   .datos{
       margin-bottom: -20%;
   }
-</style>
-</head>
-<body>
-    <section class="informacion">
-        <div class="parrafos">
-            <p>Has confirmado tu invitación al matrimonio de</p>
-        </div>
-        <div class="textos">
-            <img src="../images/ilustracioncyd.png" alt="ilustracion" class="ilustracion">
-        </div>
-
-        <div class="textos datos">
-            <h1 id="h1">Carol & Daniel</h1>
-            <p>Recuerda que nuestra ceremonia y celebración posterior se realizaran el día:</p>
-            <h2>15 . 01 . 2023</h2>
-            <p>A las 18:30 en Parroquia de Concon para continuar la fiesta en Centro de eventos Chapanay</p>
-            <h3>¡Te esperamos!</h3>
-        </div>
-
-        <div class="textos" id="footer">
-            <p class="texto-blanco">¿Necesitas revisar los datos de nuevo? Vuelve a nuestro sitio web y revisa toda la información aquí:</p>
-            <a href="https://guestmanager-production.up.railway.app/"><button class="boton-volver" >Ir al sitio</button></a>
-        </div>
-
-    </section>
-</body>
-</html>

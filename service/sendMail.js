@@ -3,6 +3,9 @@ const fs = require("fs");
 const { promisify } = require("util");
 const readFile = promisify(fs.readFile);
 const dotenv = require('dotenv');
+const path = require('path')
+const ejs = require('ejs');
+
 
 
 module.exports = {
@@ -15,15 +18,26 @@ module.exports = {
         pass: process.env.MAIL_PASS
       },
     });
-
-    let infoParameter = {
-      from: '"Carol y Daniel" <matricarolydaniel@gmail.com>', // sender address
-      to: mail, // list of receivers
-      subject: "Confirmadisimo", // Subject line
-      html: await readFile("public/template/mail.html", "utf8"), // html body
-    };
-
-    transporter.sendMail(infoParameter);
-  },
+    ejs.renderFile('views/mail.ejs', (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        var mailOptions = {
+          from: '"Carol y Daniel" <matricarolydaniel@gmail.com>', // sender address
+          to: mail, // list of receivers
+          subject: "Confirmadisimo", // Subject line
+          html: data
+        };
+  
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            return console.log(error);
+          }
+          console.log('Message sent: %s', info.messageId);
+        });
+      }
+    });
+  }
 };
+
 
