@@ -535,7 +535,8 @@ input.radio{
   align-items: flex-end;
   align-content: flex-end;
 }
-@media only screen and (min-width: 400px) {
+
+@media only screen and (min-width: 500px) {
   main{
     background-image: url("../images/portada_escritorio.png");
     background-size: 65%;
@@ -559,7 +560,7 @@ input.radio{
     width: 185%;
     height: 139%;
     border-radius: 50%;
-    box-shadow: 41px 200px 87px 389px #385420;
+    box-shadow: 500px 200px 87px 389px #385420;
     right: 68%;
   }
   .nav h1{
@@ -581,13 +582,13 @@ input.radio{
     justify-content: normal;
   }
   .menu-boton label img {
-    height: 3rem;
+    height: 8rem;
   }
   .menu-boton label.btn {
     margin-left: 1.5rem;
   }
   #icono-regalo{
-    height: 3.3rem;
+    height: 8.3rem;
   }
   .modal-overlay{
     position: fixed;
