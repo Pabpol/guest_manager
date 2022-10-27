@@ -6,18 +6,18 @@ module.exports = {
   addGuest: async(guest) => {
     console.log(guest);
     try {
-      if (guest.mail === "") {
+      if (await guest.mail === "") {
         throw error;
       }
       if (!guestRespository.get(guest.mail)) {
-        guestRespository.add(guest);
+        await guestRespository.add(guest);
         await send(guest.mail);
         return true;
       }else{
         return false;
       }
     } catch (error) {
-      throw error
+      throw new Error("El mail es un cmapo obligatorio.")
     }
   },
 };

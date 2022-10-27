@@ -55,6 +55,7 @@ p{
   letter-spacing: 0.005em;
 }
 button{
+  cursor: pointer;
   position: relative;
   border: none;
   border-radius: 4.4em;
@@ -62,6 +63,15 @@ button{
   height: 3em;
   margin: 0.5em 0;
   font-size: 2.4em;
+}
+input{
+  cursor: pointer;
+}
+a{
+  cursor: pointer;
+}
+label{
+  cursor: pointer;
 }
 
 .nav::after{
@@ -437,7 +447,7 @@ input.radio{
   margin: 1vh;
 }
 #ingresar-mail{
-  height: 60%;
+  height: 100vh;
 }
 #llevas-acompañante{
   height: 100vh;
@@ -536,6 +546,21 @@ input.radio{
   align-content: flex-end;
 }
 
+#invitacion-form .tab .btn-blanco button {
+  background-color: #F3EADA;
+  color: #385420;
+  margin-bottom: 3vh;
+  height: 51px;
+  width: 129px;
+  margin: 0;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 31px;
+  letter-spacing: 0.005em;
+}
+
 @media only screen and (min-width: 500px) {
   main{
     background-image: url("../images/portada_escritorio.png");
@@ -619,6 +644,8 @@ input.radio{
   }
   .modal-title {
     grid-column: 1/5;
+    padding: 0 0 0 74px;
+    
   }
   .modal-title h1 {
   font-size: 6vmin;
@@ -627,18 +654,25 @@ input.radio{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 65%;
+    margin: auto;
   }
   .modal-body h2 {
-    font-size: 16px;
     display: flex;
     flex-direction: column;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.005em;
   }
   .modal-body .btn-blanco {
-    width: 60%;
+    width: 80%;
     margin-inline: auto;
   }
   .modal-body .btn-transparente {
-    width: 60%;
+    width: 80%;
     margin-inline: auto;
   }
   .ripple{
@@ -646,10 +680,16 @@ input.radio{
     font-size: 1.4em;
   }
   .modal-body p {
-    font-size: 1.5vmax;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.005em;
   }
   .direccion img{
-    height: 1rem;
+    width: 24px;
+    height: 32px;
     margin-block: auto;
   }
   .closeBtn {
@@ -734,19 +774,29 @@ input.radio{
     width: 100%;
     margin-bottom: 30px;
   }
+  .input-group.radio{
+    width: 61%;
+  }
   .input-group.radio >legend {
     font-size: 1.5vw;
-    margin-top: 0;
-    width: 61%;
+    margin: 0 0 25px 0;
+    width: 100%;
   }
   .input-group.radio >label {
     margin: 3px;
+    align-self: center;
+    margin-right: auto;
+  }
+  input.radio{
+    margin: 0 10px 0 0px;
+    width: 23px;
+    height: 37px; 
   }
   .btn-blanco .button p {
     font-size: 1vmax;
   }
   .btn-blanco .button.ripple {
-    margin-right: 15%;
+    margin-right: 10%;
   }
   .tab > h1 {
     font-size: 4vmin;
@@ -760,17 +810,26 @@ input.radio{
     align-content: stretch;
     align-items: flex-start;
   }
+  #llevas-acompañante label{
+    font-size: 2.3vmin;
+    font-weight: 400;
+  }
+  #llevas-acompañante .atras .button {
+    height: 25px;
+    align-items: center;
+    left: 1vw;
+  }
   .atras .button {
     height: 25px;
     align-items: center;
     left: 7vw;
   }
   #ingresar-mail {
-    height: 100%;
+    height: 100vh;
     width: 61%;
     margin: auto;
     margin-top: 60px;
-    display: flex;
+    display: flex !important;
     align-items: flex-start;
     flex-direction: column;
   }
@@ -781,9 +840,27 @@ input.radio{
   #ingresar-mail h1{
     text-align: start;
   }
-  #ingresar-mail.input-group{
+  #ingresar-mail .input-group{
     align-self: flex-start;
-    margin: none;
+    margin:0;
+    width: 90%;
   }
-
+  #ingresar-mail .atras .button{
+    width: 27px;
+    left: -1vw;
+  }
+  #invitacion-form .tab .btn-blanco button {
+    background-color: #F3EADA;
+    color: #385420;
+    margin-bottom: 3vh;
+    height: 30px;
+    width: 160px;
+    margin: 0;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31px;
+    letter-spacing: 0.005em;
+  }
 }

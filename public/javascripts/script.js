@@ -132,11 +132,11 @@ function ceremoniaTitle() {
 }
 function ceremoniaBody() {
   return `               
-  <p>Te invitamos a acompañarnos en nuestra ceremonia el día 5 de enero a las 18:00 hrs en la Parroquía de Concón:</p>
+  <p>Te invitamos a acompañarnos en nuestra ceremonia el día 28 de enero de 2023 a las 18:30 hrs en la parroquía Nuestra señora de las Mercedes de Concón:</p>
   <h2>Dirección</h2>
-  <div class="direccion"><img src="/images/map_pin.svg"><p>Las Palmeras s/n, Quintero, Valparaíso</p></div>
-  <a class="btn-blanco" target="_blank" href="https://goo.gl/maps/1xLci9iWepqtk57D6"><button class="ripple">Ver en Google Maps</button></a>
-  <a class="btn-transparente" target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=M2YzbjMyOWo2bTJybThwanBoZGUybzB1Y2sgcGFicG9sdmFsQG0&amp;tmsrc=pabpolval%40gmail.com"><button class="ripple">Agrega a tu calendario de Google</button></a>
+  <div class="direccion"><img src="/images/map_pin.svg"><p>Calle Maroto 950, Concón</p></div>
+  <a class="btn-blanco" target="_blank" href="https://goo.gl/maps/y23i38gL4VSJq91RA"><button class="ripple">Ver en Google Maps</button></a>
+  <a class="btn-transparente" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=N2gyMmk4ZXRvNHZvN2lsanBwZXRqcWd0cGUgbWF0cmljYXJvbHlkYW5pZWxAbQ&tmsrc=matricarolydaniel%40gmail.com"><button class="ripple">Agrega a tu calendario de Google</button></a>
   `;
 }
 function fiestaTitle() {
@@ -147,7 +147,7 @@ function fiestaBody() {
   <p>Después de la ceremonia los esperamos para disfrutar una rica cena en el Centro de eventos Chapanay a las 20:00 hrs.</p>
   <h2>Dirección</h2>
   <div class="direccion"><img src="/images/map_pin.svg"><p>Las Palmeras s/n, Quintero, Valparaíso</p></div>
-  <a class="btn-blanco" target="_blank" href="https://goo.gl/maps/1xLci9iWepqtk57D6"><button class="ripple">Ver en Google Maps</button></a>
+  <a class="btn-blanco" target="_blank" href="https://goo.gl/maps/dE3AHZPRmtcRVXWs6"><button class="ripple">Ver en Google Maps</button></a>
   `;
 }
 function codigoTitle() {
@@ -155,8 +155,8 @@ function codigoTitle() {
 }
 function codigoBody() {
   return `               
-  <p>Si quieres dejarnos un regalito o compras regularmente en “Nombre tienda” te invitamos a dejar nuestro código de novios:</p>
-  <a class="btn-transparente"><button class="ripple">COD1GO0015</button></a>
+  <p>Si quieres dejarnos un regalito o compras regularmente en tiendas Paris te invitamos a dejar nuestro código de novios:</p>
+  <a class="btn-transparente"><button class="ripple">4911261</button></a>
   <p>Puedes utilizarlo en cualquier tienda de Chile</p>
 
   `;
@@ -260,7 +260,7 @@ function formBody() {
                             <input type="text" name="mail" id="mail" placeholder="Ingresa tu email aquí...">
                         </div>
 
-                        <input type="submit" value="Enviar">
+                        <div class="btn-blanco" id="siguiente"><div class="button ripple"><button type="submit">Confirmar</button></div></div>
                         <a class="atras" onclick='anteriorTab()'><div class="button ripple"><img src="/images/atras.png" alt="ir a la hoja de formulario anterior"></div></a>
 
                     </div>

@@ -4,7 +4,7 @@ const guestService = require('../service/guestService')
 
 router.post("/",async (req, res) => {
     try {
-      if ( guestService.addGuest(req.body)) {
+      if ( await guestService.addGuest(req.body)) {
         res.status(200)
         res.redirect('/confirmado');
         res.end();
