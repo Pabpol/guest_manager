@@ -173,11 +173,11 @@ function formBody() {
                     <div class="tab">
                         <div class="input-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre">
+                            <input type="text" name="nombre" id="nombre"  placeholder="Ingresa tu nombre aquí...">
                         </div>
                         <div class="input-group">
                             <label for="apellido">Apellido</label>
-                            <input type="text" name="apellido" id="apellido">
+                            <input type="text" name="apellido" id="apellido" placeholder="Ingresa tu apellido aquí...">
                         </div>
                         <div class="input-group radio">
                                 <legend>¿Necesitas un menú especial?</legend>
@@ -220,11 +220,11 @@ function formBody() {
                             acompañante</h1>
                         <div class="input-group">
                             <label for="nombreAcomp">Nombre:</label>
-                            <input type="text" name="nombreAcomp" id="nombre">
+                            <input type="text" name="nombreAcomp" id="nombre" placeholder="Ingresa su nombre aquí...">
                         </div>
                         <div class="input-group">
                             <label for="apellidoAcomp">Apellido:</label>
-                            <input type="text" name="apellidoAcomp" id="apellido">
+                            <input type="text" name="apellidoAcomp" id="apellido" placeholder="Ingresa su apellido aquí...">
                         </div>
                         <div class="input-group radio">
                                 <legend>¿Necesitas un menú especial?</legend>

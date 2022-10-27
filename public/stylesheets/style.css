@@ -67,6 +67,18 @@ button{
 input{
   cursor: pointer;
 }
+input[type="text"]{
+  height: 50px;
+  padding: 0 0 0 30px;;
+  font-size: 1rem;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 31px;
+  letter-spacing: 0.005em;
+  color: #385420;
+}
 a{
   cursor: pointer;
 }
@@ -569,6 +581,9 @@ input.radio{
     background-repeat: no-repeat;
     background-position: 1% 16%;
     height: 100%;
+  }
+  input[type="text"]{
+    height: 50px;
   }
   .nav{
     right: 0;
