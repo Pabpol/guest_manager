@@ -1,10 +1,10 @@
 const { Guest } = require('../models');
 
 module.exports = {
-    add: (guest) =>{
+    add: async (guest) =>{
         Guest.create(guest)
     },
-    get:(mail) =>{
+    get: async (mail) =>{
         Guest.findOne({where: {mail: mail}})
     }
 }

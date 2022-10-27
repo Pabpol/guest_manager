@@ -1,8 +1,13 @@
+html{
+  min-height: 100%;
+  background-color: #fff;
+}
 body{
   font-family: 'Abril Fatface', cursive;
   font-size: 2vmin;
   margin: 0;
   height: 100vh;
+
 }
 main{
   background-image: url("../images/portada.png");
@@ -14,7 +19,7 @@ main{
 .nav{
   overflow: hidden;
   position: absolute;
-  bottom: 0;
+  bottom: -10%;
   width: 100%;
   height: 45%;
   display: flex;
@@ -50,6 +55,7 @@ p{
   letter-spacing: 0.005em;
 }
 button{
+  cursor: pointer;
   position: relative;
   border: none;
   border-radius: 4.4em;
@@ -57,6 +63,15 @@ button{
   height: 3em;
   margin: 0.5em 0;
   font-size: 2.4em;
+}
+input{
+  cursor: pointer;
+}
+a{
+  cursor: pointer;
+}
+label{
+  cursor: pointer;
 }
 
 .nav::after{
@@ -223,7 +238,7 @@ button{
 .form-overlay{
   position: fixed;
   z-index: 1;
-  width: 100%;
+  width: 100vh;
   overflow: auto;
   pointer-events: none;
   bottom: 0;
@@ -235,6 +250,7 @@ button{
 .form-overlay.active{
 pointer-events: initial;
 bottom: 0;
+background-color: white;
 right: 0;
 }
 
@@ -248,13 +264,14 @@ right: 0;
   color: #385420;
   display: flex;
   flex-direction: column;
+  margin-top: 10vh;
 }
 
 .form-header{
 display: grid;
 grid-template-columns: repeat(6, 1fr);
 gap: 5px;
-padding: 2vh 2vh 0 3vh;
+padding: 6vh 2vh 0 3vh;
 
 }
 .form-title{
@@ -280,6 +297,7 @@ margin: 2vh 0 0 0;
 padding: 0 3em 0 3em;
 text-align: start;
 height: 100%;
+margin-top: 25px;
 }
 .form-body p{
 font-size: 2.5vmax;
@@ -398,12 +416,14 @@ input.radio{
   
 }
 .tab.active{
+  position: relative;
   pointer-events: initial;
   bottom: 0;
   right: 0;
 }
 
 .tab.active.siguiente{
+  position: absolute;
   pointer-events: initial;
   bottom: 0;
   right: 100%;
@@ -427,12 +447,11 @@ input.radio{
   margin: 1vh;
 }
 #ingresar-mail{
-  height: 60%;
+  height: 100vh;
 }
 #llevas-acompañante{
-  height: 60%;
+  height: 100vh;
 }
-
 .fondo-error {
   background-image: url("../images/error-mobile.png");
   background-size:cover;
@@ -525,4 +544,323 @@ input.radio{
   justify-content: flex-end;
   align-items: flex-end;
   align-content: flex-end;
+}
+
+#invitacion-form .tab .btn-blanco button {
+  background-color: #F3EADA;
+  color: #385420;
+  margin-bottom: 3vh;
+  height: 51px;
+  width: 129px;
+  margin: 0;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 31px;
+  letter-spacing: 0.005em;
+}
+
+@media only screen and (min-width: 500px) {
+  main{
+    background-image: url("../images/portada_escritorio.png");
+    background-size: 65%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 1% 16%;
+    height: 100%;
+  }
+  .nav{
+    right: 0;
+    width: 46%;
+    height: 100%;
+    justify-content: normal;
+    align-items: flex-end;
+    bottom: 0;
+  
+  }
+  .nav::after{
+    content: '';
+    position: absolute;
+    bottom: -18%;
+    width: 185%;
+    height: 139%;
+    border-radius: 50%;
+    box-shadow: 600px 200px 87px 389px #385420;
+    right: 68%;
+  }
+  .nav h1{
+    margin: 4% 0% 10% 5%;
+    align-self: center;
+    font-size: 6vmin;
+  }
+  .menu{
+    align-items: flex-end;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    margin: 0 12% 0 0;
+    gap: 1rem;
+  }
+  .menu-boton{
+    flex-direction: row-reverse;
+    align-items: normal;
+    justify-content: normal;
+  }
+  .menu-boton label img {
+    height: 8rem;
+  }
+  .menu-boton label.btn {
+    margin-left: 1.5rem;
+  }
+  #icono-regalo{
+    height: 8.3rem;
+  }
+  .modal-overlay{
+    position: fixed;
+    z-index: 1;
+    width: 50%;
+    overflow: auto;
+    pointer-events: none;
+    bottom: 0;
+    right: -100%;
+    transition: 1.5s;
+    height: 100%;
+    overflow: visible;
+    /* margin: 50% 0 0 0; */
+    
+  }
+  .modal-overlay.active{
+    pointer-events: initial;
+    bottom: 0;
+    right: 0;
+  }
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    box-shadow: 8px -4px 20px 3px rgb(69 69 69 / 50%);
+    overflow: visible;
+  }
+  .modal-title {
+    grid-column: 1/5;
+    padding: 0 0 0 74px;
+    
+  }
+  .modal-title h1 {
+  font-size: 6vmin;
+  } 
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 65%;
+    margin: auto;
+  }
+  .modal-body h2 {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.005em;
+  }
+  .modal-body .btn-blanco {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .modal-body .btn-transparente {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .ripple{
+    height: 2.3em;
+    font-size: 1.4em;
+  }
+  .modal-body p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.005em;
+  }
+  .direccion img{
+    width: 24px;
+    height: 32px;
+    margin-block: auto;
+  }
+  .closeBtn {
+    height: 65%;
+  }
+  .form-overlay{
+    position: fixed;
+    z-index: 1;
+    width: 50%;
+    overflow: auto;
+    pointer-events: none;
+    bottom: 0;
+    right: -100%;
+    transition: 1.5s;
+    overflow: visible;
+
+  }
+  .form-overlay.active{
+    background-color: transparent;
+  }
+  .form-content{
+    background-color:  #FFFFFF;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    color: #385420;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4.4em 0 0 4.4em;
+    box-shadow: 8px -4px 20px 3px rgb(69 69 69 / 50%);
+
+  }
+
+  .tab{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    overflow: auto;
+    pointer-events: visible;
+    bottom: 0;
+    right: -100%;
+    transition: 1s;
+    width: 100%;
+    height: 80vh;
+    
+  }
+  .tab.active.siguiente{
+
+    right: 0;
+    z-index: -1;
+    transition: 0ms;
+  }
+  .tab.active{
+    right: 0; 
+  }
+  .form-header{
+    padding: 5vh 2vh 0 3vh;
+  }
+  .form-title{
+    margin-inline: auto;
+  }
+  .form-title h1{
+    font-size: 6vmin;
+  }
+  .form-title p {
+    font-size: 1.4vmax;
+  }
+  .closeBtnForm{
+    height: 70px;
+  }
+  .input-group{
+    width: 61%;
+    margin: auto;
+  }
+  .input-group label{
+    font-size: 2.3vmin;
+    font-weight: 400;
+    margin: 0 0 1vh 0;
+  }
+  .input-group input {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .input-group.radio{
+    width: 61%;
+  }
+  .input-group.radio >legend {
+    font-size: 1.5vw;
+    margin: 0 0 25px 0;
+    width: 100%;
+  }
+  .input-group.radio >label {
+    margin: 3px;
+    align-self: center;
+    margin-right: auto;
+  }
+  input.radio{
+    margin: 0 10px 0 0px;
+    width: 23px;
+    height: 37px; 
+  }
+  .btn-blanco .button p {
+    font-size: 1vmax;
+  }
+  .btn-blanco .button.ripple {
+    margin-right: 10%;
+  }
+  .tab > h1 {
+    font-size: 4vmin;
+  }
+  #llevas-acompañante{
+    width: 61%;
+    margin-inline: auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: flex-start;
+  }
+  #llevas-acompañante label{
+    font-size: 2.3vmin;
+    font-weight: 400;
+  }
+  #llevas-acompañante .atras .button {
+    height: 25px;
+    align-items: center;
+    left: 1vw;
+  }
+  .atras .button {
+    height: 25px;
+    align-items: center;
+    left: 7vw;
+  }
+  #ingresar-mail {
+    height: 100vh;
+    width: 61%;
+    margin: auto;
+    margin-top: 60px;
+    display: flex !important;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .form-body p {
+    font-size: 1.2vmax;
+    text-align: start;
+  }
+  #ingresar-mail h1{
+    text-align: start;
+  }
+  #ingresar-mail .input-group{
+    align-self: flex-start;
+    margin:0;
+    width: 90%;
+  }
+  #ingresar-mail .atras .button{
+    width: 27px;
+    left: -1vw;
+  }
+  #invitacion-form .tab .btn-blanco button {
+    background-color: #F3EADA;
+    color: #385420;
+    margin-bottom: 3vh;
+    height: 30px;
+    width: 160px;
+    margin: 0;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31px;
+    letter-spacing: 0.005em;
+  }
 }
