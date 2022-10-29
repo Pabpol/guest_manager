@@ -7,7 +7,7 @@ const confirmar = document.getElementById("btnConfirmar");
 const modal = document.querySelector(".modal-overlay");
 const form = document.querySelector(".form-overlay");
 const tabs = document.getElementsByClassName("tab");
-const invitacionForm = document.getElementById('invitacion-form')
+const invitacionForm = document.getElementById("invitacion-form");
 let currentTab = 0;
 
 ceremonia.addEventListener("click", () => {
@@ -38,7 +38,6 @@ codigoNovios.addEventListener("click", () => {
 });
 
 confirmar.addEventListener("click", () => {
-
   toggleClass(form);
 
   document.querySelector(".form-title").innerHTML = formTitle();
@@ -46,10 +45,8 @@ confirmar.addEventListener("click", () => {
   if (!Array.from(tabs[0].classList).find((e) => e === "active")) {
     toggleClass(tabs[0]);
   }
-  tabs[0].style.display = "block"
-  setTimeout(() => {
-
-  }, 500);
+  tabs[0].style.display = "block";
+  setTimeout(() => {}, 500);
 
   setTimeout(() => {
     confirmar.checked = false;
@@ -60,27 +57,26 @@ btnClose.addEventListener("click", () => {
   toggleClass(modal);
 });
 btnCloseForm.addEventListener("click", () => {
+  
   toggleClass(form);
 });
 
 function siguienteTab() {
   if (checkInputs()) {
     if (document.getElementById("invitado").checked) {
-      tabs[currentTab + 2].style.display = "block"
+      tabs[currentTab + 2].style.display = "block";
       setTimeout(() => {
         toggleClassSiguiente(tabs[currentTab]);
         toggleClass(tabs[currentTab + 2]);
         currentTab += 2;
       }, 500);
-
     } else {
-      tabs[currentTab + 1].style.display = "block"
+      tabs[currentTab + 1].style.display = "block";
       setTimeout(() => {
         toggleClassSiguiente(tabs[currentTab]);
         toggleClass(tabs[currentTab + 1]);
         currentTab += 1;
       }, 500);
-
     }
   } else {
     alert("todos los campos son obligatorios");
@@ -100,7 +96,7 @@ function checkInputs() {
       valid = false;
     }
     if (y[i].type === "radio" && !y[i].checked) {
-      comparador+=1
+      comparador += 1;
     }
   }
   if (comparador === radio) {
@@ -110,9 +106,29 @@ function checkInputs() {
 }
 
 function anteriorTab() {
-  toggleClass(tabs[currentTab]);
-  toggleClassSiguiente(tabs[currentTab - 1]);
-  currentTab -= 1;
+  if (document.getElementById("invitado").checked) {
+    //TODO s checked false
+    if (currentTab === 1) {
+      setTimeout(() => {
+        toggleClass(tabs[currentTab]);
+        toggleClassSiguiente(tabs[currentTab - 1]);
+        document.getElementById("invitado").checked = false;
+        currentTab -= 1;
+      }, 500);
+    }else{
+      setTimeout(() => {
+        toggleClass(tabs[currentTab]);
+        toggleClassSiguiente(tabs[currentTab - 2]);
+        currentTab -= 2;
+      }, 500);
+    }
+  } else {
+    setTimeout(() => {
+      toggleClass(tabs[currentTab]);
+      toggleClassSiguiente(tabs[currentTab - 1]);
+      currentTab -= 1;
+    }, 500);
+  }
 }
 
 function toggleClass(item) {
@@ -122,10 +138,9 @@ function toggleClassSiguiente(item) {
   item.classList.toggle("siguiente");
 }
 
-function submit(){
+function submit() {
   invitacionForm.submit();
 }
-
 
 function ceremoniaTitle() {
   return `<h1>¡Agenda el día!</h1>`;
