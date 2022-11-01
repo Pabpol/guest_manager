@@ -9,7 +9,7 @@ module.exports = {
       if (await guest.mail === "") {
         throw error;
       }
-      if (!guestRespository.get(guest.mail)) {
+      if (! await guestRespository.get(guest.mail)) {
         await guestRespository.add(guest);
         await send(guest.mail);
         return true;

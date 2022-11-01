@@ -57,7 +57,7 @@ btnClose.addEventListener("click", () => {
   toggleClass(modal);
 });
 btnCloseForm.addEventListener("click", () => {
-  
+  currentTab = 0;
   toggleClass(form);
 });
 
