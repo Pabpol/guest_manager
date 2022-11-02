@@ -916,4 +916,12 @@ input.radio{
     line-height: 31px;
     letter-spacing: 0.005em;
   }
+  .boton-volver{
+    height: 2em;
+    font-size: 1.4em;
+  }
+  .fondo-confirmado,
+  .fondo-error{
+    background-image: url(../images/fondo_final_web.png);
+  }
 }
