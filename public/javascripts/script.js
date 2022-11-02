@@ -234,32 +234,32 @@ function formBody() {
                         <h1>Datos de tu
                             acompañante</h1>
                         <div class="input-group">
-                            <label for="nombreAcomp">Nombre:</label>
-                            <input type="text" name="nombreAcomp" id="nombre" placeholder="Ingresa su nombre aquí...">
+                            <label for="nombreAcompnanante">Nombre:</label>
+                            <input type="text" name="nombreAcompnanante" id="nombre" placeholder="Ingresa su nombre aquí...">
                         </div>
                         <div class="input-group">
-                            <label for="apellidoAcomp">Apellido:</label>
-                            <input type="text" name="apellidoAcomp" id="apellido" placeholder="Ingresa su apellido aquí...">
+                            <label for="apellidoAcompanante">Apellido:</label>
+                            <input type="text" name="apellidoAcompanante" id="apellido" placeholder="Ingresa su apellido aquí...">
                         </div>
                         <div class="input-group radio">
                                 <legend>¿Necesitas un menú especial?</legend>
                                 <label>
-                                    <input class="radio" type="radio" name="menuAcomp" value="NORMAL"> No
+                                    <input class="radio" type="radio" name="menuAcompanante" value="NORMAL"> No
                                 </label>
                                 <label>
-                                    <input class="radio" type="radio" name="menuAcomp" value="vegetariano"> Vegetariano
+                                    <input class="radio" type="radio" name="menuAcompanante" value="vegetariano"> Vegetariano
                                 </label>
                                 <label>
-                                    <input class="radio" type="radio" name="menuAcomp" value="Sin gluten"> Sin gluten
+                                    <input class="radio" type="radio" name="menuAcompanante" value="Sin gluten"> Sin gluten
                                 </label>
                                 <label>
-                                    <input class="radio" type="radio" name="menuAcomp" value="Sin azucar"> Sin azúcar
+                                    <input class="radio" type="radio" name="menuAcompanante" value="Sin azucar"> Sin azúcar
                                 </label>
                                 <label>
-                                    <input class="radio" type="radio" name="menuAcomp" value="Sin Lacteos"> Sin Lacteos
+                                    <input class="radio" type="radio" name="menuAcompanante" value="Sin Lacteos"> Sin Lacteos
                                 </label>
                                 <label>
-                                    <input class="radio" type="radio" name="menuAcomp" value="Otro"> Otro
+                                    <input class="radio" type="radio" name="menuAcompanante" value="Otro"> Otro
                                 </label>
                         </div>
                         <a class="btn-blanco" onclick='siguienteTab()' id="siguiente"><div class="button ripple"><p>Siguiente</p></div></a>
