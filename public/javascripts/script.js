@@ -161,7 +161,7 @@ function fiestaBody() {
   return `               
   <p>Después de la ceremonia los esperamos para disfrutar una rica cena en el Centro de eventos Chapanay a las 20:00 hrs.</p>
   <h2>Dirección</h2>
-  <div class="direccion"><img src="/images/map_pin.svg"><p>Las Palmeras s/n, Quintero, Valparaíso</p></div>
+  <div class="direccion"><img src="/images/map_pin.svg"><p>Las Palmeras s/n, Mantagua, Quintero</p></div>
   <a class="btn-blanco" target="_blank" href="https://goo.gl/maps/dE3AHZPRmtcRVXWs6"><button class="ripple">Ver en Google Maps</button></a>
   `;
 }
