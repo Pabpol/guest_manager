@@ -6,6 +6,9 @@ module.exports = {
     },
     get: async (mail) =>{
         Guest.findOne({where: {mail: mail}})
+    },
+    getAll: async () =>{
+        Guest.findAll();
     }
 }
 
