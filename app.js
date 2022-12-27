@@ -11,6 +11,7 @@ var confirmadoRouter = require('./routes/confirmado');
 var mailYaExiste = require('./routes/mailYaExiste');
 var errorView = require('./routes/error');
 var dashboard = require('./routes/dashboard');
+var exportInvitados = require('./routes/exportInvitados');
 
 var app = express();
 
@@ -31,6 +32,8 @@ app.use('/confirmado', confirmadoRouter);
 app.use('/ya-confirmado', mailYaExiste);
 app.use('/error', errorView);
 app.use('/invitados', dashboard);
+app.use('/download-list', exportInvitados);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,7 +8,15 @@ module.exports = {
         Guest.findOne({where: {mail: mail}})
     },
     getAll: async () =>{
-        Guest.findAll();
+        return await Guest.findAll({
+            attributes: ["nombre",
+            "apellido",
+            "menu",
+            "nombreAcompnanante",
+            "apellidoAcompanante",
+            "menuAcompanante"
+        ]
+        });
     }
 }
 
