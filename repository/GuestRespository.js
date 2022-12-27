@@ -6,6 +6,17 @@ module.exports = {
     },
     get: async (mail) =>{
         Guest.findOne({where: {mail: mail}})
+    },
+    getAll: async () =>{
+        return await Guest.findAll({
+            attributes: ["nombre",
+            "apellido",
+            "menu",
+            "nombreAcompnanante",
+            "apellidoAcompanante",
+            "menuAcompanante"
+        ]
+        });
     }
 }
 
