@@ -1,0 +1,927 @@
+html{
+  min-height: 100%;
+  background-color: #fff;
+}
+body{
+  font-family: 'Abril Fatface', cursive;
+  font-size: 2vmin;
+  margin: 0;
+  height: 100vh;
+
+}
+main{
+  background-image: url("../images/portada.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height:80%
+}
+.nav{
+  overflow: hidden;
+  position: absolute;
+  bottom: -10%;
+  width: 100%;
+  height: 45%;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+
+}
+h1{
+  font-family: 'Abril Fatface';
+  font-size: 8vmin;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  font-weight: 200;
+
+}
+h2{
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.005em;
+}
+p{
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.005em;
+}
+button{
+  cursor: pointer;
+  position: relative;
+  border: none;
+  border-radius: 4.4em;
+  width: 100%;
+  height: 3em;
+  margin: 0.5em 0;
+  font-size: 2.4em;
+}
+input{
+  cursor: pointer;
+}
+input[type="text"]{
+  height: 50px;
+  padding: 0 0 0 30px;;
+  font-size: 1rem;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 31px;
+  letter-spacing: 0.005em;
+  color: #385420;
+}
+a{
+  cursor: pointer;
+}
+label{
+  cursor: pointer;
+}
+
+.nav::after{
+  content:'';
+  position:absolute;
+  bottom:60%;
+  width:100%;
+  height:100%;
+  border-radius:100%;
+  box-shadow: 0px 300px 0px 300px #385420;
+}
+.menu{
+  display: flex;
+  justify-content: space-around;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.menu-boton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  size: 10px;
+}
+.menu-boton > label > img{
+  height: 17vmin;
+}
+.menu-boton > p{
+  font-size: 3.5vmin;
+  margin-bottom: 0;
+  line-height: normal;
+}
+#btnCeremonia {
+  display: none;
+}
+#btnCeremonia:checked + label > img {
+
+  content:url("../images/ceremonia_select.png")
+}
+#btnFiesta {
+  display: none;
+}
+#btnFiesta:checked + label > img {
+
+  content:url("../images/fiesta_select.png")
+}
+#btnCodigo {
+  display: none;
+}
+#btnCodigo:checked + label > img {
+
+  content:url("../images/regalo_select.png")
+}
+#btnConfirmar {
+  display: none;
+}
+#btnConfirmar:checked + label > img {
+
+  content:url("../images/confirmar_select.png")
+}
+
+
+.modal-overlay{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    overflow: auto;
+    pointer-events: none;
+    bottom: -100%;
+    transition: 1s;
+    width: 100%;
+    /* margin: 50% 0 0 0; */
+    
+}
+.modal-overlay.active{
+  pointer-events: initial;
+  bottom: 0;;
+}
+
+.modal-content{
+  background-color:  #385420;
+  border-radius: 4.4em;
+  width: 100%;
+  height: 82vh;
+  text-align: center;
+  color: #fff;
+}
+
+.modal-header{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  padding: 2vh 2vh 0 3vh;
+
+}
+.modal-title{
+  grid-column: 1/4;
+}
+.closeBtn{
+  grid-column: 6/7;
+  margin: 2vh 0 0 0;
+}
+.modal-body{
+  padding: 0 3em 0 3em;
+  text-align: start;
+}
+.modal-body p{
+  font-size: 2.5vmax;
+  font-weight: 300;
+  margin: 3vh 0 3vh 0.8vh;
+}
+.modal-body h2{
+  margin: 0;
+}
+
+.direccion{
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin: 0 2em 3vh 2em;
+}
+.direccion p {
+
+  margin: 3vh 0 3vh 2vh;
+}
+.btn-blanco button{
+  background-color: #F3EADA;
+  color: #385420;
+  margin-bottom: 3vh;
+}
+.btn-blanco button.ripple {
+  background-position: center;
+  transition: background 1s;
+}
+.btn-blanco button.ripple:hover {
+  background: #F3EADA radial-gradient(circle, transparent 1%, #f3c982 1%) center/15000%;
+}
+.btn-blanco button.ripple:active {
+  background-color: #F3EADA;
+  background-size: 100%;
+  transition: background 0s;
+}
+.btn-transparente button{
+  background-color: transparent;
+  color: #F3EADA;
+  border: solid 1px #F3EADA;
+}
+.btn-transparente button.ripple {
+  background-position: center;
+  transition: background 1s;
+}
+.btn-transparente button.ripple:hover {
+  background: radial-gradient(circle, transparent 1%, #243614 1%) center/15000%;
+}
+.btn-transparente button.ripple:active {
+  background-color: #233414;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.form-overlay{
+  position: fixed;
+  z-index: 1;
+  width: 100vh;
+  overflow: auto;
+  pointer-events: none;
+  bottom: 0;
+  right: -100%;
+  transition: 1.5s;
+  width: 100%;
+  
+}
+.form-overlay.active{
+pointer-events: initial;
+bottom: 0;
+background-color: white;
+right: 0;
+}
+
+
+
+.form-content{
+  background-color:  #FFFFFF;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  color: #385420;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+}
+
+.form-header{
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+gap: 5px;
+padding: 6vh 2vh 0 3vh;
+
+}
+.form-title{
+grid-column: 1/6;
+text-align: start;
+
+}
+.form-title h1{
+  color: #385420;
+  text-align: start;
+  margin-bottom: 1vh;
+}
+.form-title p{
+  color: #262626;
+  font-size: 2.4vmax;
+  margin: 1vh 0;
+}
+.closeBtnForm{
+grid-column: 6/7;
+margin: 2vh 0 0 0;
+}
+.form-body{
+padding: 0 3em 0 3em;
+text-align: start;
+height: 100%;
+margin-top: 25px;
+}
+.form-body p{
+font-size: 2.5vmax;
+font-weight: 300;
+margin: 3vh 0 3vh 0.8vh;
+}
+.form-body h2{
+margin: 0;
+}
+
+.button{
+  position: relative;
+  border: none;
+  border-radius: 4.4em;
+  margin: 0.5em 0;
+  font-size: 2.4em;
+}
+
+.btn-blanco .button{
+  background-color: #F3EADA;
+  color: #385420;
+  margin: 3vh 3vh ;
+  display: block;
+  margin-left: auto;
+  position: absolute;
+  right: 0;
+  
+}
+.btn-blanco .button p{
+  font-weight: 600;
+  font-size: 2vmax;
+  text-align: center;
+  margin: 1vh 3vh;
+}
+.btn-blanco .button.ripple {
+  background-position: center;
+  transition: background 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-blanco .button.ripple:hover {
+  background: #F3EADA radial-gradient(circle, transparent 1%, #f3c982 1%) center/15000%;
+}
+.btn-blanco .button.ripple:active {
+  background-color: #F3EADA;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label,
+legend{
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.005em;
+  margin: 0 0 1vh 5vw;
+
+}
+label{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 5vmin;
+}
+.input-group input{
+  border: 1px solid #385420;
+  border-radius: 30px;
+  align-self: center;
+  position: inherit;
+  width: 90%;
+  height: 43px;
+  box-sizing: border-box;
+}
+
+.input-group.radio{
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(2, 1fr);
+}
+.input-group.radio >legend{
+  grid-column: span 2;
+  text-align: start;
+  font-size: 5vw;
+  margin-top: 2vw;
+}
+input.radio{
+  width: 5vw;
+  margin: 0 2vw 0 0;
+}
+.input-group.radio >label{
+  font-weight: 300;
+}
+
+
+.tab{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  overflow: auto;
+  pointer-events: visible;
+  bottom: 0;
+  right: -100%;
+  transition: 1s;
+  width: 100%;
+  height: 80vh;
+  
+}
+.tab.active{
+  position: relative;
+  pointer-events: initial;
+  bottom: 0;
+  right: 0;
+}
+
+.tab.active.siguiente{
+  position: absolute;
+  pointer-events: initial;
+  bottom: 0;
+  right: 100%;
+}
+.tab{
+  z-index: 1;
+  width: 100%;
+  overflow: auto;
+  pointer-events: visible;
+  top: -100%;
+  right: -100%;
+  transition: 1s;
+  
+}
+.tab.active.siguiente{
+
+  right: 0;
+  z-index: -1;
+  transition: 1s;
+  bottom: 0;
+  width: 100%;
+  height: 80vh;
+  
+
+}
+.tab.active{
+  right: 0; 
+  bottom: 0;
+  z-index: 1;
+
+  transition: 1s;
+  width: 100%;
+  height: 80vh;
+}
+.atras{
+  position: relative;
+  border: none;
+  border-radius: 4.4em;
+  font-size: 2.4em;
+}
+.atras .button{
+  background-color: #F3EADA;
+  color: #385420;
+  margin: 3vh;
+  display: flex;
+  position: absolute;
+  padding: 1.5vh;
+}
+.tab > h1{
+  color: #385420;
+  margin: 1vh;
+}
+#ingresar-mail{
+  height: 100vh;
+}
+#llevas-acompañante{
+  height: 100vh;
+}
+.fondo-error {
+  background-image: url("../images/error-mobile.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.caja-error {
+  padding: 0px 25px 0px 25px;
+  text-align: center;
+}
+
+
+.textos-error H1 {
+  font-family: 'Abril Fatface';
+  font-size: 8vmin;
+  text-align: center;
+  color:#233414;
+  z-index: 1;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.textos-error p {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.005em;
+  text-align: center;
+}
+
+.hoja-superior {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hoja-inferior {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+}
+
+.boton-volver {
+  background-color: #F3EADA;
+  color: #233414;
+  width: auto;
+  padding: 0px 30px 0px 30px;
+}
+
+.boton-volver:hover {
+  background-color:#385420;
+  color: #FFFFFF;
+}
+
+.fondo-confirmado {
+  background-image: url("../images/fondo-confirmado.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.caja-confirmado {
+  padding: 0px 25px 0px 25px;
+  text-align: center;
+}
+
+
+.hoja-superior-confirmado {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.hoja-inferior-confirmado {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+}
+
+#invitacion-form .tab .btn-blanco button {
+  background-color: #F3EADA;
+  color: #385420;
+  margin-bottom: 3vh;
+  height: 51px;
+  width: 129px;
+  margin: 0;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 31px;
+  letter-spacing: 0.005em;
+}
+
+@media only screen and (min-width: 500px) {
+  main{
+    background-image: url("../images/portada_escritorio.png");
+    background-size: 65%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 1% 16%;
+    height: 100%;
+  }
+  input[type="text"]{
+    height: 50px;
+  }
+  .nav{
+    right: 0;
+    width: 46%;
+    height: 100%;
+    justify-content: normal;
+    align-items: flex-end;
+    bottom: 0;
+  
+  }
+  .nav::after{
+    content: '';
+    position: absolute;
+    bottom: -18%;
+    width: 185%;
+    height: 139%;
+    border-radius: 50%;
+    box-shadow: 600px 200px 87px 389px #385420;
+    right: 68%;
+  }
+  .nav h1{
+    margin: 4% 0% 10% 5%;
+    align-self: center;
+    font-size: 6vmin;
+  }
+  .menu{
+    align-items: flex-end;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    margin: 0 12% 0 0;
+    gap: 1rem;
+  }
+  .menu-boton{
+    flex-direction: row-reverse;
+    align-items: normal;
+    justify-content: normal;
+  }
+  .menu-boton label img {
+    height: 8rem;
+  }
+  .menu-boton label.btn {
+    margin-left: 1.5rem;
+  }
+  #icono-regalo{
+    height: 8.3rem;
+  }
+  .modal-overlay{
+    position: fixed;
+    z-index: 1;
+    width: 50%;
+    overflow: auto;
+    pointer-events: none;
+    bottom: 0;
+    right: -100%;
+    transition: 1.5s;
+    height: 100%;
+    overflow: visible;
+    /* margin: 50% 0 0 0; */
+    
+  }
+  .modal-overlay.active{
+    pointer-events: initial;
+    bottom: 0;
+    right: 0;
+  }
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    box-shadow: 8px -4px 20px 3px rgb(69 69 69 / 50%);
+    overflow: visible;
+  }
+  .modal-title {
+    grid-column: 1/5;
+    padding: 0 0 0 74px;
+    
+  }
+  .modal-title h1 {
+  font-size: 6vmin;
+  } 
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 65%;
+    margin: auto;
+  }
+  .modal-body h2 {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.005em;
+  }
+  .modal-body .btn-blanco {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .modal-body .btn-transparente {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .ripple{
+    height: 2.3em;
+    font-size: 1.4em;
+  }
+  .modal-body p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.005em;
+  }
+  .direccion img{
+    width: 24px;
+    height: 32px;
+    margin-block: auto;
+  }
+  .closeBtn {
+    height: 65%;
+  }
+  .form-overlay{
+    position: fixed;
+    z-index: 1;
+    width: 50%;
+    overflow: auto;
+    pointer-events: none;
+    bottom: 0;
+    right: -100%;
+    transition: 1.5s;
+    overflow: visible;
+
+  }
+  .form-overlay.active{
+    background-color: transparent;
+  }
+  .form-content{
+    background-color:  #FFFFFF;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    color: #385420;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4.4em 0 0 4.4em;
+    box-shadow: 8px -4px 20px 3px rgb(69 69 69 / 50%);
+
+  }
+
+  .tab{
+    z-index: 1;
+    width: 100%;
+    overflow: auto;
+    pointer-events: visible;
+    top: -100%;
+    right: -100%;
+    transition: 1s;
+    
+  }
+  .tab.active.siguiente{
+
+    right: 0;
+    z-index: -1;
+    transition: 1s;
+    bottom: 0;
+    width: 100%;
+    height: 80vh;
+    
+
+  }
+  .tab.active{
+    right: 0; 
+    bottom: 0;
+    z-index: 1;
+
+    transition: 1s;
+    width: 100%;
+    height: 80vh;
+    
+  }
+  .form-header{
+    padding: 5vh 2vh 0 3vh;
+  }
+  .form-title{
+    margin-inline: auto;
+  }
+  .form-title h1{
+    font-size: 6vmin;
+  }
+  .form-title p {
+    font-size: 1.4vmax;
+  }
+  .closeBtnForm{
+    height: 70px;
+  }
+  .input-group{
+    width: 61%;
+    margin: auto;
+  }
+  .input-group label{
+    font-size: 2.3vmin;
+    font-weight: 400;
+    margin: 0 0 1vh 0;
+  }
+  .input-group input {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .input-group.radio{
+    width: 61%;
+  }
+  .input-group.radio >legend {
+    font-size: 1.5vw;
+    margin: 0 0 25px 0;
+    width: 100%;
+  }
+  .input-group.radio >label {
+    margin: 3px;
+    align-self: center;
+    margin-right: auto;
+  }
+  input.radio{
+    margin: 0 10px 0 0px;
+    width: 23px;
+    height: 37px; 
+  }
+  .btn-blanco .button p {
+    font-size: 1vmax;
+  }
+  .btn-blanco .button.ripple {
+    margin-right: 10%;
+  }
+  .tab > h1 {
+    font-size: 4vmin;
+  }
+  #llevas-acompañante{
+    width: 61%;
+    margin-inline: auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: flex-start;
+  }
+  #llevas-acompañante label{
+    font-size: 2.3vmin;
+    font-weight: 400;
+  }
+  #llevas-acompañante .atras .button {
+    height: 25px;
+    align-items: center;
+    left: 1vw;
+  }
+  .atras .button {
+    height: 25px;
+    align-items: center;
+    left: 7vw;
+  }
+  #ingresar-mail {
+    height: 100vh;
+    width: 61%;
+    margin: auto;
+    margin-top: 60px;
+    display: flex !important;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .form-body p {
+    font-size: 1.2vmax;
+    text-align: start;
+  }
+  #ingresar-mail h1{
+    text-align: start;
+  }
+  #ingresar-mail .input-group{
+    align-self: flex-start;
+    margin:0;
+    width: 90%;
+  }
+  #ingresar-mail .atras .button{
+    width: 27px;
+    left: -1vw;
+  }
+  #invitacion-form .tab .btn-blanco button {
+    background-color: #F3EADA;
+    color: #385420;
+    margin-bottom: 3vh;
+    height: 30px;
+    width: 160px;
+    margin: 0;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31px;
+    letter-spacing: 0.005em;
+  }
+  .boton-volver{
+    height: 2em;
+    font-size: 1.4em;
+  }
+  .fondo-confirmado,
+  .fondo-error{
+    background-image: url(../images/fondo_final_web.png);
+  }
+}
