@@ -9,13 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const sequelize_1 = require("@nestjs/sequelize");
 const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const guest_module_1 = require("./guest/guest.module");
-const guest_model_1 = require("./guest/guest.model");
 const email_service_1 = require("./email/email.service");
 const export_service_1 = require("./export/export.service");
 let AppModule = class AppModule {
@@ -26,21 +24,6 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
-            }),
-            sequelize_1.SequelizeModule.forRootAsync({
-                imports: [config_1.ConfigModule],
-                useFactory: (configService) => ({
-                    dialect: 'mysql',
-                    host: configService.get('DB_HOST'),
-                    port: +configService.get('DB_PORT'),
-                    username: configService.get('DB_USERNAME'),
-                    password: configService.get('DB_PASSWORD'),
-                    database: configService.get('DB_DATABASE'),
-                    models: [guest_model_1.Guest],
-                    autoLoadModels: true,
-                    synchronize: false,
-                }),
-                inject: [config_1.ConfigService],
             }),
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: (0, path_1.join)(__dirname, '..', '..', 'frontend', 'build'),

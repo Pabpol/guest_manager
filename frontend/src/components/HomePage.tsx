@@ -26,6 +26,8 @@ const HomePage: React.FC = () => {
     mail: '',
   });
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: '', body: '' });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -45,6 +47,41 @@ const HomePage: React.FC = () => {
     } catch (error) {
       navigate('/error');
     }
+  };
+
+  const openModal = (type: string) => {
+    let title = '';
+    let body = '';
+    
+    switch(type) {
+      case 'ceremony':
+        title = '¡Agenda el día!';
+        body = `
+          <p>Te invitamos a acompañarnos en nuestra ceremonia el día 24 de junio de 2023 a las 18:30 hrs en la Quinta Valle Antilén:</p>
+          <h2>Dirección</h2>
+          <div class="direccion"><img src="/images/map_pin.svg"><p>Quinta Valle Antilén</p></div>
+        `;
+        break;
+      case 'party':
+        title = '¡Vamos a celebrar!';
+        body = `
+          <p>Después de la ceremonia los esperamos para disfrutar una rica cena en la Quinta Valle Antilén a las 20:00 hrs.</p>
+          <h2>Dirección</h2>
+          <div class="direccion"><img src="/images/map_pin.svg"><p>Quinta Valle Antilén</p></div>
+        `;
+        break;
+      case 'code':
+        title = 'Código Novios';
+        body = `
+          <p>Si quieres dejarnos un regalito o compras regularmente en tiendas Paris te invitamos a dejar nuestro código de novios:</p>
+          <a class="btn-transparente"><button class="ripple">4911261</button></a>
+          <p>Puedes utilizarlo en cualquier tienda de Chile</p>
+        `;
+        break;
+    }
+    
+    setModalContent({ title, body });
+    setIsModalOpen(true);
   };
 
   return (
@@ -86,14 +123,14 @@ const HomePage: React.FC = () => {
         <div className="menu-container">
           <div className="menu-boton">
             <input type="checkbox" id="btnCodigo" />
-            <label className="btn" htmlFor="btnCodigo">
+            <label className="btn" htmlFor="btnCodigo" onClick={() => openModal('code')}>
               <img id="icono-regalo" src="/images/regalo.png" alt="" />
             </label>
             <p>Código<br /> Novios</p>
           </div>
           <div className="menu-boton" id="confirmar">
-            <input type="checkbox" id="btnConfirmar" onChange={() => setIsFormOpen(true)} />
-            <label className="btn" htmlFor="btnConfirmar">
+            <input type="checkbox" id="btnConfirmar" />
+            <label className="btn" htmlFor="btnConfirmar" onClick={() => setIsFormOpen(true)}>
               <img src="/images/confirmar.png" alt="" />
             </label>
             <p>¡Confirma<br /> aquí!</p>
@@ -101,101 +138,147 @@ const HomePage: React.FC = () => {
         </div>
       </nav>
 
+      {/* Modal */}
+      {isModalOpen && (
+        <div id="simpleModal" className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div className="modal-title">
+                <h1 dangerouslySetInnerHTML={{ __html: modalContent.title }} />
+              </div>
+              <img className="closeBtn" src="/images/cerrar.png" alt="" 
+                onClick={() => setIsModalOpen(false)} />
+            </div>
+            <div className="modal-body" dangerouslySetInnerHTML={{ __html: modalContent.body }}>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Form Modal */}
       {isFormOpen && (
         <div id="simpleForm" className="form-overlay">
           <div className="form-content">
             <div className="form-header">
-              <div className="form-title"></div>
+              <div className="form-title">
+                <h1>Confirma <br /> tu asistencia</h1>
+                <p>llenando el siguiente formulario.</p>
+              </div>
               <img className="closeBtnForm" src="/images/cerrar.png" alt="" 
                 onClick={() => setIsFormOpen(false)} />
             </div>
             <div className="form-body">
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label>Nombre:</label>
+              <form onSubmit={handleSubmit} style={{ padding: '20px' }}>
+                <div className="form-group" style={{ marginBottom: '15px' }}>
+                  <label style={{ display: 'block', marginBottom: '5px' }}>Nombre:</label>
                   <input
+                    style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
                     type="text"
                     name="nombre"
                     value={formData.nombre}
                     onChange={handleInputChange}
+                    placeholder="Ingresa tu nombre aquí..."
                     required
                   />
                 </div>
-                <div className="form-group">
-                  <label>Apellido:</label>
+                <div className="form-group" style={{ marginBottom: '15px' }}>
+                  <label style={{ display: 'block', marginBottom: '5px' }}>Apellido:</label>
                   <input
+                    style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
                     type="text"
                     name="apellido"
                     value={formData.apellido}
                     onChange={handleInputChange}
+                    placeholder="Ingresa tu apellido aquí..."
                     required
                   />
                 </div>
-                <div className="form-group">
-                  <label>Email:</label>
+                <div className="form-group" style={{ marginBottom: '15px' }}>
+                  <label style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
                   <input
+                    style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
                     type="email"
                     name="mail"
                     value={formData.mail}
                     onChange={handleInputChange}
+                    placeholder="Ingresa tu email aquí..."
                     required
                   />
                 </div>
-                <div className="form-group">
-                  <label>Menú:</label>
-                  <select name="menu" value={formData.menu} onChange={handleInputChange}>
-                    <option value="">Seleccionar</option>
-                    <option value="normal">Normal</option>
+                <div className="form-group" style={{ marginBottom: '15px' }}>
+                  <label style={{ display: 'block', marginBottom: '5px' }}>¿Necesitas un menú especial?</label>
+                  <select name="menu" value={formData.menu} onChange={handleInputChange}
+                    style={{ width: '100%', padding: '8px', marginBottom: '10px' }}>
+                    <option value="">No</option>
                     <option value="vegetariano">Vegetariano</option>
-                    <option value="vegano">Vegano</option>
-                    <option value="celiaco">Celíaco</option>
+                    <option value="Sin gluten">Sin gluten</option>
+                    <option value="Sin azucar">Sin azúcar</option>
+                    <option value="Sin Lacteos">Sin Lacteos</option>
+                    <option value="Otro">Otro</option>
                   </select>
                 </div>
-                <div className="form-group">
-                  <label>
+                <div className="form-group" style={{ marginBottom: '15px' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
                     <input
                       type="checkbox"
                       name="tieneAcompanante"
                       checked={formData.tieneAcompanante}
                       onChange={handleInputChange}
+                      style={{ marginRight: '8px' }}
                     />
                     ¿Tienes acompañante?
                   </label>
                 </div>
                 {formData.tieneAcompanante && (
                   <>
-                    <div className="form-group">
-                      <label>Nombre Acompañante:</label>
+                    <div className="form-group" style={{ marginBottom: '15px' }}>
+                      <label style={{ display: 'block', marginBottom: '5px' }}>Nombre Acompañante:</label>
                       <input
+                        style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
                         type="text"
                         name="nombreAcompnanante"
                         value={formData.nombreAcompnanante}
                         onChange={handleInputChange}
+                        placeholder="Ingresa su nombre aquí..."
                       />
                     </div>
-                    <div className="form-group">
-                      <label>Apellido Acompañante:</label>
+                    <div className="form-group" style={{ marginBottom: '15px' }}>
+                      <label style={{ display: 'block', marginBottom: '5px' }}>Apellido Acompañante:</label>
                       <input
+                        style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
                         type="text"
                         name="apellidoAcompanante"
                         value={formData.apellidoAcompanante}
                         onChange={handleInputChange}
+                        placeholder="Ingresa su apellido aquí..."
                       />
                     </div>
-                    <div className="form-group">
-                      <label>Menú Acompañante:</label>
-                      <select name="menuAcompanante" value={formData.menuAcompanante} onChange={handleInputChange}>
-                        <option value="">Seleccionar</option>
-                        <option value="normal">Normal</option>
+                    <div className="form-group" style={{ marginBottom: '15px' }}>
+                      <label style={{ display: 'block', marginBottom: '5px' }}>¿Menú especial para acompañante?</label>
+                      <select name="menuAcompanante" value={formData.menuAcompanante} onChange={handleInputChange}
+                        style={{ width: '100%', padding: '8px', marginBottom: '10px' }}>
+                        <option value="">No</option>
                         <option value="vegetariano">Vegetariano</option>
-                        <option value="vegano">Vegano</option>
-                        <option value="celiaco">Celíaco</option>
+                        <option value="Sin gluten">Sin gluten</option>
+                        <option value="Sin azucar">Sin azúcar</option>
+                        <option value="Sin Lacteos">Sin Lacteos</option>
+                        <option value="Otro">Otro</option>
                       </select>
                     </div>
                   </>
                 )}
-                <button type="submit">Confirmar</button>
+                <button type="submit" style={{ 
+                  width: '100%', 
+                  padding: '12px', 
+                  backgroundColor: '#4CAF50', 
+                  color: 'white', 
+                  border: 'none', 
+                  borderRadius: '4px',
+                  fontSize: '16px',
+                  cursor: 'pointer'
+                }}>
+                  Confirmar
+                </button>
               </form>
             </div>
           </div>

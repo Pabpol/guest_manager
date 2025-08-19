@@ -1,13 +1,11 @@
-import { Injectable, ConflictException } from '@nestjs/common';
-// import { InjectModel } from '@nestjs/sequelize';
-// import { Guest } from './guest.model';
-import { CreateGuestDto, GuestResponseDto } from './dto/guest.dto';
+import { Injectable } from '@nestjs/common';
+import { CreateGuestDto, GuestResponseDto } from '../guest/dto/guest.dto';
 import { EmailService } from '../email/email.service';
 import { ExportService } from '../export/export.service';
 
 @Injectable()
-export class GuestService {
-  private mockGuests: (GuestResponseDto & { mail: string })[] = [
+export class MockGuestService {
+  private guests: (GuestResponseDto & { mail: string })[] = [
     {
       nombre: 'Juan',
       apellido: 'Pérez',
@@ -25,21 +23,10 @@ export class GuestService {
       apellidoAcompanante: '',
       menuAcompanante: '',
       mail: 'ana@example.com'
-    },
-    {
-      nombre: 'Carlos',
-      apellido: 'Rodríguez',
-      menu: 'Sin gluten',
-      nombreAcompnanante: 'Laura',
-      apellidoAcompanante: 'Martínez',
-      menuAcompanante: 'vegetariano',
-      mail: 'carlos@example.com'
     }
   ];
 
   constructor(
-    // @InjectModel(Guest)
-    // private readonly guestModel: typeof Guest,
     private readonly emailService: EmailService,
     private readonly exportService: ExportService,
   ) {}
@@ -50,10 +37,10 @@ export class GuestService {
         throw new Error('El mail es un campo obligatorio.');
       }
 
-      const existingGuest = this.mockGuests.find(guest => guest.mail === guestData.mail);
-      
+      const existingGuest = this.guests.find(guest => guest.mail === guestData.mail);
+
       if (!existingGuest) {
-        this.mockGuests.push({
+        this.guests.push({
           nombre: guestData.nombre || '',
           apellido: guestData.apellido || '',
           menu: guestData.menu || '',
@@ -63,8 +50,9 @@ export class GuestService {
           mail: guestData.mail
         });
         
-        console.log(`✅ Guest added: ${guestData.nombre} ${guestData.apellido} (${guestData.mail})`);
-        await this.emailService.sendConfirmationEmail(guestData.mail);
+        console.log(`Mock: Guest added - ${guestData.nombre} ${guestData.apellido}`);
+        // Skip email sending in mock
+        // await this.emailService.sendConfirmationEmail(guestData.mail);
         return true;
       } else {
         return false;
@@ -76,7 +64,7 @@ export class GuestService {
 
   async getAllGuests(): Promise<GuestResponseDto[]> {
     try {
-      return this.mockGuests.map(({ mail, ...guest }) => guest);
+      return this.guests.map(({ mail, ...guest }) => guest);
     } catch (error) {
       throw new Error('Error al listar los invitados');
     }
@@ -87,7 +75,8 @@ export class GuestService {
       const guests = await this.getAllGuests();
       await this.exportService.exportGuestsToExcel(guests);
     } catch (error) {
-      console.log('📁 Export requested (using mock data)');
+      console.log('Mock: Excel export requested');
+      // Don't throw error in mock mode
     }
   }
 }

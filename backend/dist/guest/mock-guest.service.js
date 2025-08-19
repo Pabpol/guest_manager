@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GuestService = void 0;
+exports.MockGuestService = void 0;
 const common_1 = require("@nestjs/common");
 const email_service_1 = require("../email/email.service");
 const export_service_1 = require("../export/export.service");
-let GuestService = class GuestService {
+let MockGuestService = class MockGuestService {
     emailService;
     exportService;
-    mockGuests = [
+    guests = [
         {
             nombre: 'Juan',
             apellido: 'Pérez',
@@ -34,15 +34,6 @@ let GuestService = class GuestService {
             apellidoAcompanante: '',
             menuAcompanante: '',
             mail: 'ana@example.com'
-        },
-        {
-            nombre: 'Carlos',
-            apellido: 'Rodríguez',
-            menu: 'Sin gluten',
-            nombreAcompnanante: 'Laura',
-            apellidoAcompanante: 'Martínez',
-            menuAcompanante: 'vegetariano',
-            mail: 'carlos@example.com'
         }
     ];
     constructor(emailService, exportService) {
@@ -54,9 +45,9 @@ let GuestService = class GuestService {
             if (!guestData.mail || guestData.mail === '') {
                 throw new Error('El mail es un campo obligatorio.');
             }
-            const existingGuest = this.mockGuests.find(guest => guest.mail === guestData.mail);
+            const existingGuest = this.guests.find(guest => guest.mail === guestData.mail);
             if (!existingGuest) {
-                this.mockGuests.push({
+                this.guests.push({
                     nombre: guestData.nombre || '',
                     apellido: guestData.apellido || '',
                     menu: guestData.menu || '',
@@ -65,8 +56,7 @@ let GuestService = class GuestService {
                     menuAcompanante: guestData.menuAcompanante || '',
                     mail: guestData.mail
                 });
-                console.log(`✅ Guest added: ${guestData.nombre} ${guestData.apellido} (${guestData.mail})`);
-                await this.emailService.sendConfirmationEmail(guestData.mail);
+                console.log(`Mock: Guest added - ${guestData.nombre} ${guestData.apellido}`);
                 return true;
             }
             else {
@@ -79,7 +69,7 @@ let GuestService = class GuestService {
     }
     async getAllGuests() {
         try {
-            return this.mockGuests.map(({ mail, ...guest }) => guest);
+            return this.guests.map(({ mail, ...guest }) => guest);
         }
         catch (error) {
             throw new Error('Error al listar los invitados');
@@ -91,14 +81,14 @@ let GuestService = class GuestService {
             await this.exportService.exportGuestsToExcel(guests);
         }
         catch (error) {
-            console.log('📁 Export requested (using mock data)');
+            console.log('Mock: Excel export requested');
         }
     }
 };
-exports.GuestService = GuestService;
-exports.GuestService = GuestService = __decorate([
+exports.MockGuestService = MockGuestService;
+exports.MockGuestService = MockGuestService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [email_service_1.EmailService,
         export_service_1.ExportService])
-], GuestService);
-//# sourceMappingURL=guest.service.js.map
+], MockGuestService);
+//# sourceMappingURL=mock-guest.service.js.map

@@ -49,18 +49,27 @@ const config_1 = require("@nestjs/config");
 let EmailService = class EmailService {
     configService;
     transporter;
+    emailEnabled;
     constructor(configService) {
         this.configService = configService;
-        this.transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'matricarolydaniel@gmail.com',
-                pass: this.configService.get('EMAIL_PASS'),
-            },
-        });
+        const emailPass = this.configService.get('EMAIL_PASS');
+        this.emailEnabled = !!emailPass;
+        if (this.emailEnabled) {
+            this.transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'matricarolydaniel@gmail.com',
+                    pass: emailPass,
+                },
+            });
+        }
     }
     async sendConfirmationEmail(email) {
         try {
+            if (!this.emailEnabled) {
+                console.log(`[DEMO MODE] Email would be sent to: ${email}`);
+                return;
+            }
             const mailOptions = {
                 from: '"Carol y Daniel" <matricarolydaniel@gmail.com>',
                 to: email,
@@ -72,7 +81,7 @@ let EmailService = class EmailService {
         }
         catch (error) {
             console.error('Error sending email:', error);
-            throw new Error('Error sending confirmation email');
+            console.log(`[DEMO MODE] Email would be sent to: ${email}`);
         }
     }
     getEmailTemplate() {
