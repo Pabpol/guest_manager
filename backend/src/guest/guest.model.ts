@@ -1,57 +1,31 @@
-import { Column, Model, Table, DataType } from 'sequelize-typescript';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Table({
-  tableName: 'guests',
-  underscored: true,
-  timestamps: false,
-})
-export class Guest extends Model<Guest> {
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
+@Entity('guests')
+export class Guest {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ nullable: true })
   nombre: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
+  @Column({ nullable: true })
   apellido: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
+  @Column({ nullable: true })
   menu: string;
 
-  @Column({
-    type: DataType.BOOLEAN,
-    allowNull: true,
-  })
+  @Column({ nullable: true, default: false })
   tieneAcompanante: boolean;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
+  @Column({ nullable: true })
   nombreAcompnanante: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
+  @Column({ nullable: true })
   apellidoAcompanante: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
+  @Column({ nullable: true })
   menuAcompanante: string;
 
-  @Column({
-    type: DataType.STRING,
-    unique: true,
-    allowNull: false,
-  })
+  @Column({ unique: true })
   mail: string;
 }
